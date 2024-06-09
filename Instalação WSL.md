@@ -47,7 +47,7 @@ PS > wsl --list --online
 ![Windows PowerShell](./images/ps-distros-v2.png "Windows PowerShell")
 
 Em seguida, instale a distribuição desejada usando **wsl --install -d <Distro>**.
-Neste curso será utilizada a distribuição **Ubuntu 20.04 LTS**. Caso opte por
+Neste curso será utilizada a distribuição **Ubuntu 24.04 LTS**. Caso opte por
 uma distribuição diferente será necessário adaptar as instruções fornecidas.
 
 ```console
@@ -160,15 +160,8 @@ Caso sua vesão do kernel seja inferior à requerida abra o *PowerShell* como
 administrador e execute o comando **wsl --update**.
 
 Para compartilhar dispositivos USB a partir do Windows precisamos instalar o
-servidor do  USB/IP, o **USBIP-WIN**, disponível em [2]. Faça o download e 
+servidor do  USB/IP, o **USBIP-WIN**, disponível em <a href="https://github.com/dorssel/usbipd-win/releases">Link</a>. Faça o download e 
 execute o arquivo ***usbipd-win_x.msi***. 
-
-Ou alternativamente, é possível baixar pelo powershell do Windows com o comando:
-
-```
-winget install usbipd
-``` 
-![Powershell Usbipd](powershell-usbipd.png "Powershell Usbipd")
 
 Ao final do processo de instalação teremos
 
@@ -189,16 +182,19 @@ Para facilitar a atualização do cliente USB/IP vamos utilizar a ferramenta
 versões do cliente USB/IP de forma transparente.
 
 ```console
-foo@bar$ apt list -a linux-tools-generic
+phfujinami@Pedro-Legion:~$ apt list -a linux-tools-generic
 Listing... Done
-linux-tools-generic/focal-updates,focal-security,now 5.4.0.113.117 amd64 [installed]
-linux-tools-generic/focal 5.4.0.26.32 amd64
-foo@bar$ sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.4.0-113-generic/usbip 20
+linux-tools-generic/noble-updates,noble-security,now 6.8.0-35.35 amd64 [installed]
+linux-tools-generic/noble 6.8.0-31.31 amd64
+foo@bar$ sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/6.8.0-35-generic/usbipd 20
 ```
 
 **ATENÇÃO**: **O comando acima funciona adequadamente para o pacote**
-**linux-tools-generic versão 5.4.0-113. Caso a versão instalada do pacote**
+**linux-tools-generic versão 6.8.0-35.35. Caso a versão instalada do pacote**
 **seja diferente linha de comando deverá ser modificada adequadamente.**
+> Caso sua versão **linux-tools-generic** seja diferente, procure o caminho até o arquivo e o copie
+> adapte para o **[PATH]** no comando linux: ```sudo update-alternatives --install [PATH] 20```
+> ![Path gerenciador-win-2-linux](images\Path-gerenciador-win2linux.png "Path win-2-linux")
 
 ![Ubuntu terminal](images/lab-01-linux-tools-01.jpg "Ubuntu terminal")
 
@@ -246,7 +242,7 @@ PS >  usbipd wsl list
 ```
 
 Observe que ao listarmos novamente os dispositivos USB vemos que o estado do
-gravador ST-LINK foi de **Not attached** para **Attached - Ubuntu-20.04**.
+gravador ST-LINK foi de **Not attached** para **Attached - Ubuntu-24.04**.
 
 ![Windows PowerShell](images/usbipd-attach.jpg "Windows PowerShell")
 
