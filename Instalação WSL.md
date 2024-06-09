@@ -164,9 +164,11 @@ servidor do  USB/IP, o **USBIP-WIN**, disponível em [2]. Faça o download e
 execute o arquivo ***usbipd-win_x.msi***. 
 
 Ou alternativamente, é possível baixar pelo powershell do Windows com o comando:
+
 ```
 winget install usbipd
 ``` 
+![Powershell Usbipd](powershell-usbipd.png "Powershell Usbipd")
 
 Ao final do processo de instalação teremos
 
