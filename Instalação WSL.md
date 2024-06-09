@@ -104,7 +104,7 @@ Os comando acima criaram os diretórios ***/home/usuario/Downloads*** e
 salvar arquivos e programas baixados da internet e o diretório semb1-workspace
 para nossas atividades de laboratório.
 
-### 5.1 Acesso do sistema de arquivos do Linux no Windows Explorer
+### 4.1 Acesso do sistema de arquivos do Linux no Windows Explorer
 
 Em algumas situações pode ser necessário acessar algum arquivo do Linux 
 utilizando algum aplicativo Windows ou você queira explorar o sistema de
@@ -115,7 +115,7 @@ Para montar o sistema de arquivos do Linux abra uma nova janela do Windows
 Explorer e digite na barra de endereços ***\\\\wsl$***. Após pressionar a
 tecla **ENTER** você terá acesso ao sistema de arquivos do Linux.
 
-![Ubuntu terminal](./images/windows-wsl-mount.jpg "Ubuntu terminal")
+![Ubuntu terminal](./images/windows-wsl-mount-v2.png "Ubuntu terminal")
 
 ## 5. Configuração do WSL2 para utilização de dispositivos USB
 
@@ -128,7 +128,7 @@ O USB (*Universal Serial Bus*) é, provavelmente, uma das interfaces de computad
 mais importantes para o desenvolvimento de sistemas embarcados. É através desta
 interface que gravamos, depuramos o código e testamos o hardware.
 
-No fim de 2021 a Microsoft anunciou que adicionou suporte USB ao WSL [1]
+No fim de 2021 a Microsoft adicionou suporte USB ao WSL [1]
 permitindo que todo o ciclo de desenvolvimento de um sistema embarcado seja
 realizado diretamente do WSL. As seções seguintes mostram como utilizar o WSL
 para gravar um *firmware* no kit de desenvolvimento *STM32F411 Blackpill*.
@@ -140,6 +140,8 @@ compartilhamento de dispositivos USB através de uma rede IP denominado USB/IP
 ou *USB over IP*. Com o USB/IP é possível compartilhar um dispositivo USB,
 seja ele uma câmera, um HD externo, mouse, impressora, ou qualquer outro
 dispositivo utilizando uma rede IP.
+
+Ainda na versão posterior, a WSL2, ainda é necessário fazer configurações para uso da USBIP.
 
 O USB/IP abstrai uma conexão USB em um dispositivo genérico (servidor) e a
 partir daí transmite os pacotes de dados USB pra outro computador (cliente)
@@ -154,14 +156,16 @@ utilizando o comando **uname -a**.
 foo@bar$ uname -a
 ```
 
-![Ubuntu terminal](images/ubuntu-uname.jpg "Ubuntu terminal")
+> ![Ubuntu terminal](images/ubuntu-uname-v2.png "Ubuntu terminal")
+>
+> Na imagem acima, o kernel é 5.15.146.1, sendo necessário revisar as seguintes configurações para adequar-se a máquina.
 
 Caso sua vesão do kernel seja inferior à requerida abra o *PowerShell* como
 administrador e execute o comando **wsl --update**.
 
 Para compartilhar dispositivos USB a partir do Windows precisamos instalar o
-servidor do  USB/IP, o **USBIP-WIN**, disponível em <a href="https://github.com/dorssel/usbipd-win/releases">Link</a>. Faça o download e 
-execute o arquivo ***usbipd-win_x.msi***. 
+servidor do  USB/IP, o **USBIP-WIN**, disponível em <a href="https://github.com/dorssel/usbipd-win/releases">Link Oficial Microsoft</a>. Faça o download e 
+execute o arquivo ***usbipd-win_x.msi*** mais recente. 
 
 Ao final do processo de instalação teremos
 
@@ -182,7 +186,7 @@ Para facilitar a atualização do cliente USB/IP vamos utilizar a ferramenta
 versões do cliente USB/IP de forma transparente.
 
 ```console
-phfujinami@Pedro-Legion:~$ apt list -a linux-tools-generic
+foo@bar:~$ apt list -a linux-tools-generic
 Listing... Done
 linux-tools-generic/noble-updates,noble-security,now 6.8.0-35.35 amd64 [installed]
 linux-tools-generic/noble 6.8.0-31.31 amd64
@@ -194,9 +198,10 @@ foo@bar$ sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/
 **seja diferente linha de comando deverá ser modificada adequadamente.**
 > Caso sua versão **linux-tools-generic** seja diferente, procure o caminho até o arquivo e o copie
 > adapte para o **[PATH]** no comando linux: ```sudo update-alternatives --install [PATH] 20```
+>
 > ![Path gerenciador-win-2-linux](images\Path-gerenciador-win2linux.png "Path win-2-linux")
 
-![Ubuntu terminal](images/lab-01-linux-tools-01.jpg "Ubuntu terminal")
+![Ubuntu terminal](images/lab-01-linux-tools-01-v2.png "Ubuntu terminal")
 
 Para maiores informações sobre a ferramenta **update-alternatives**
 
