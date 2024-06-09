@@ -1,9 +1,9 @@
-#  Laboratório 01 - Instalação do Ubuntu 20.04 no Windows Subsystem for Linux 2 (WSL2)
+#  Laboratório 01 - Instalação do Ubuntu 24.04 no Windows Subsystem for Linux 2 (WSL2)
 
 ## 1 - Objetivos
 
 
-Instalar e configurar o Ubuntu 20.04 no Windows Subsystem for Linux 2 (WSL2).
+Instalar e configurar o Ubuntu 24.04 no Windows Subsystem for Linux 2 (WSL2).
 
 * Windows Subsystem for Linux 2;
 
@@ -44,14 +44,14 @@ digite o comando
 PS > wsl --list --online
 ```
 
-![Windows PowerShell](./images/ps-distros.jpg "Windows PowerShell")
+![Windows PowerShell](./images/ps-distros-v2.png "Windows PowerShell")
 
 Em seguida, instale a distribuição desejada usando **wsl --install -d <Distro>**.
 Neste curso será utilizada a distribuição **Ubuntu 20.04 LTS**. Caso opte por
 uma distribuição diferente será necessário adaptar as instruções fornecidas.
 
 ```console
-PS > wsl --install -d Ubuntu-20.04
+PS > wsl --install -d Ubuntu-24.04
 ```
 Quando a instalação terminar será solicitado que você escolha um nome de
 usuário e uma senha para este usuário. ATENÇÃO, **não será mostrado **
@@ -74,8 +74,7 @@ de comando a seguir atualizam a lista de pacotes e atualizam os programas
 instalados:
 
 ```console
-foo@bar$ sudo apt update
-foo@bar$ sudo apt upgrade
+foo@bar$ sudo apt update && sudo apt upgrade
 ```
 
 O *apt* executa com direitos de acesso de super-usuário logo será solicitada
@@ -162,7 +161,14 @@ administrador e execute o comando **wsl --update**.
 
 Para compartilhar dispositivos USB a partir do Windows precisamos instalar o
 servidor do  USB/IP, o **USBIP-WIN**, disponível em [2]. Faça o download e 
-execute o arquivo ***usbipd-win_x.msi***. Ao final do processo de instalação teremos
+execute o arquivo ***usbipd-win_x.msi***. 
+
+Ou alternativamente, é possível baixar pelo powershell do Windows com o comando:
+```
+winget install usbipd
+``` 
+
+Ao final do processo de instalação teremos
 
 * um serviço chamado *usbipd* (USBIP Device Host);
 * uma ferramenta de linha de comando chamada *usbipd*;
