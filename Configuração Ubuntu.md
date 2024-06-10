@@ -98,22 +98,21 @@ foo@bar$ man ls
 Para instalar o **GCC ARM Toolchain** devemos ir até o website indicado na
 referência [6] e baixar o arquivo com uma versão pré-compilada do *toolchain*
 para Linux. Na ocasião da escrita deste texto a última versão disponível era
-de outubro de 2021. Copie o endereço do link
-[gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2).
+de 30d de Outubro de 2023. Copie o endereço do link
+[arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz](https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz).
 
 Em seguida navegue até o diretório Downloads e baixe o **toolchain**
 
 ```console
 foo@bar$ cd
 foo@bar$ cd Downloads
-foo@bar$ wget \
-https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+foo@bar$ wget https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz
 ```
 
 Após o término do download descompacte o arquivo no diretório ***/usr/share***.
 
 ```console
-foo@bar$ sudo tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2 -C /usr/share/
+foo@bar$ sudo tar xvf arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz -C /usr/share/
 ```
 
 Para facilitar a utilização vamos criar links simbólicos dos programas fornecidos pelo
@@ -128,10 +127,10 @@ Por fim, precisamos instalar as dependências necessárias para a utilização d
 
 ```console
 foo@bar$ sudo apt install libncurses-dev libtinfo-dev
-foo@bar$ sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 \
-> /usr/lib/x86_64-linux-gnu/libncurses.so.5
-foo@bar$ sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 \
-> /usr/lib/x86_64-linux-gnu/libtinfo.so.5
+foo@bar$ sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 
+foo@bar$ sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.5
+foo@bar$ sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 
+foo@bar$ sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.5
 ```
 
 Podemos testar se o *toolchain* foi instalada correntamente por meio dos comandos:
