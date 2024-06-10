@@ -1,8 +1,8 @@
-# Laboratório 01 - Instalação das ferramentas de desenvolvimento - Ubuntu 20.04
+# Laboratório 01 - Instalação das ferramentas de desenvolvimento - Ubuntu 24.04
 
 ## 1 - Objetivos
 
-Configurar o Ubuntu 20.04 no Windows Subsystem for Linux 2 (WSL2) como sistema
+Configurar o Ubuntu 24.04 no Windows Subsystem for Linux 2 (WSL2) como sistema
 para desenvolvimento de firmware para microcontroladores da família STM32.
 Nesta aula iremos instalar
 
@@ -14,7 +14,7 @@ Nesta aula iremos instalar
 
 ## 2 - Pré-requisitos
 
-* Ubuntu 20.04;
+* Ubuntu 24.04;
 * Conhecimento básico da utilização de sistemas Linux;
 * ST-LINK *in-circuit debugger and programmer*.
 
@@ -22,7 +22,7 @@ Nesta aula iremos instalar
 
 [5] [GCC online documentation](https://gcc.gnu.org/onlinedocs/)
 
-[6] [GCC ARM Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+[6] [GCC ARM Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)
 
 [7] [Git](https://git-scm.com/)
 
@@ -98,8 +98,12 @@ foo@bar$ man ls
 Para instalar o **GCC ARM Toolchain** devemos ir até o website indicado na
 referência [6] e baixar o arquivo com uma versão pré-compilada do *toolchain*
 para Linux. Na ocasião da escrita deste texto a última versão disponível era
-de 30d de Outubro de 2023. Copie o endereço do link
+de 30 de Outubro de 2023. Copie o endereço do link
 [arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz](https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz).
+
+> Versão de instalação simplificada
+> ```foo@bar$ sudo apt install arm-none-eabi-gcc```
+>
 
 Em seguida navegue até o diretório Downloads e baixe o **toolchain**
 
@@ -119,8 +123,7 @@ Para facilitar a utilização vamos criar links simbólicos dos programas fornec
 **toolchain** no diretório ***/usr/bin/***
 
 ```console
-foo@bar$ sudo ln -s /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/* \
-> /usr/bin/
+foo@bar$ sudo ln -s /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/*  /usr/bin/
 ```
 
 Por fim, precisamos instalar as dependências necessárias para a utilização do **toolchain**
@@ -201,12 +204,12 @@ foo@bar$ cd openocd-code
 foo@bar$ git tag
 ```
 
-![Ubuntu terminal](./images/ubuntu-openocd-tags.jpg "Ubuntu terminal")
+![Ubuntu terminal](./images/ubuntu-openocd-tags-v2.png "Ubuntu terminal")
 
-Desejamos utilizar a versão *v0.11.0* portanto, devemos trocar para este *tag*.
+Desejamos utilizar a versão *v0.12.0* portanto, devemos trocar para este *tag*.
 
 ```console
-foo@bar$ git switch -c v0.11.0
+foo@bar$ git switch -c v0.12.0
 ```
 
 Agora, podemos compilar o **OpenOCD** utilizando a seguinte sequência de comandos
@@ -302,13 +305,13 @@ foo@bar$ cd stlink-tools
 foo@bar$ git tag
 ```
 
-![Ubuntu terminal](./images/ubuntu-stlink-tags.jpg "Ubuntu terminal")
+![Ubuntu terminal](./images/ubuntu-stlink-tags-v2.png "Ubuntu terminal")
 
 Desejamos compilar a versão estável mais recente logo, necessitamos alterar
 o *branch* para a *tag* da versão desejada:
 
 ```console
-foo@bar$ git switch -c v1.7.0
+foo@bar$ git switch -c v1.8.0
 ```
 
 Para compilar e instalar as ferramentas **stlink** execute os seguintes comandos
