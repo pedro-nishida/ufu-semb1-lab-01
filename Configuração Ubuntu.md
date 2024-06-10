@@ -47,7 +47,7 @@ foo@bar$ gcc --version
 foo@bar$ git --version
 ```
 
-![Ubuntu terminal](./images/ubuntu-gcc-version.jpg "Ubuntu terminal")
+![Ubuntu terminal](./images/ubuntu-gcc-version-v2.png "Ubuntu terminal")
 
 Para poder utilizar o **git** é necessário informar um nome de usuário e um
 e-mail:
